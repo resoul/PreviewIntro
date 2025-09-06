@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "asyncdisplaykit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/resoul/AsyncDisplayKit.git",
+      "state" : {
+        "revision" : "a5949d37743bf5a525a9cd43b913fa181dfd43fa",
+        "version" : "3.2.0"
+      }
+    }
+  ],
+  "version" : 2
+}
