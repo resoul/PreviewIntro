@@ -51,6 +51,10 @@ open class PreviewIntroController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
+    deinit {
+        cancellables.removeAll()
+    }
+
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

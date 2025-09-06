@@ -3,27 +3,27 @@ import Combine
 
 public protocol PreviewIntroViewModel {
     var isLoading: AnyPublisher<Bool, Never> { get }
-    var currentPreview: AnyPublisher<Preview?, Never> { get }
+    var currentPreview: AnyPublisher<PreviewIntro?, Never> { get }
 
-    func getPreview() -> Preview
+    func getPreview() -> PreviewIntro
     func startPreview()
 }
 
 public class PreviewIntroViewModelImpl: PreviewIntroViewModel {
     private let isLoadingSubject = CurrentValueSubject<Bool, Never>(true)
-    private let currentPreviewSubject = CurrentValueSubject<Preview?, Never>(nil)
+    private let currentPreviewSubject = CurrentValueSubject<PreviewIntro?, Never>(nil)
     private var cancellables = Set<AnyCancellable>()
-    private let previewItems: [Preview]
+    private let previewItems: [PreviewIntro]
 
     public var isLoading: AnyPublisher<Bool, Never> {
         isLoadingSubject.eraseToAnyPublisher()
     }
 
-    public var currentPreview: AnyPublisher<Preview?, Never> {
+    public var currentPreview: AnyPublisher<PreviewIntro?, Never> {
         currentPreviewSubject.eraseToAnyPublisher()
     }
 
-    public func getPreview() -> Preview {
+    public func getPreview() -> PreviewIntro {
         guard let item = previewItems.randomElement() else {
             fatalError("Preview must be provided")
         }
@@ -38,7 +38,11 @@ public class PreviewIntroViewModelImpl: PreviewIntroViewModel {
         }
     }
 
-    public init (items: [Preview] = []) {
+    public init (items: [PreviewIntro] = []) {
         previewItems = items
+    }
+
+    deinit {
+        cancellables.removeAll()
     }
 }

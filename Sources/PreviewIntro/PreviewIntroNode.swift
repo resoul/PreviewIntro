@@ -20,7 +20,7 @@ public final class PreviewIntroNode: ASDisplayNode {
         descriptionTextNode.attributedText = NSAttributedString(
             string: preview.description,
             attributes: [
-                .font: preview.headlineFont,
+                .font: preview.descriptionFont,
                 .foregroundColor: preview.descriptionColor,
                 .paragraphStyle: paragraph
             ]
@@ -71,6 +71,17 @@ public final class PreviewIntroNode: ASDisplayNode {
         )
     }
 
+    private func setupAccessibility() {
+        headlineTextNode.isAccessibilityElement = true
+        headlineTextNode.accessibilityTraits = .header
+
+        descriptionTextNode.isAccessibilityElement = true
+        descriptionTextNode.accessibilityTraits = .staticText
+
+        backgroundImageNode.isAccessibilityElement = true
+        backgroundImageNode.accessibilityTraits = .image
+    }
+
     private func setupUI() {
         automaticallyManagesSubnodes = true
         headlineTextNode.alpha = 0
@@ -82,5 +93,6 @@ public final class PreviewIntroNode: ASDisplayNode {
     public override init() {
         super.init()
         setupUI()
+        setupAccessibility()
     }
 }
