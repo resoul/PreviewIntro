@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "PreviewIntro",
     platforms: [
-        .iOS(.v15),
+        .iOS(.v13),
     ],
     products: [
         .library(

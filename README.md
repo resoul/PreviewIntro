@@ -23,13 +23,23 @@ dependencies: [
 import PreviewIntro
 import AsyncDisplayKit
 
-let preview = PreviewIntro(
-    headline: "Welcome",
-    description: "This is the intro screen",
-    image: UIImage(named: "intro")
-)
+let preview = [
+    PreviewIntro(
+        headline: "Welcome",
+        description: "This is the intro screen",
+        image: UIImage(named: "intro")
+    ),
+    PreviewIntro(
+        headline: "Welcome",
+        description: "This is the intro screen",
+        image: UIImage(named: "intro")
+    )
+]
 
+let viewModel = PreviewIntroViewModelImpl(items: preview)
 let node = PreviewIntroNode()
-node.configure(with: preview)
+
+let c = PreviewIntroController(viewModel: viewModel, viewNode: node)
+present(c, animated: true)
 
 ```

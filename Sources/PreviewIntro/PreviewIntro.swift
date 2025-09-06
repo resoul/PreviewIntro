@@ -10,7 +10,7 @@ public struct PreviewIntro {
     let descriptionColor: UIColor
     let descriptionFont: UIFont
 
-    init(
+    public init(
         headline: String,
         description: String,
         image: UIImage? = nil,
