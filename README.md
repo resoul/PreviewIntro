@@ -21,7 +21,6 @@ dependencies: [
 
 ```swift
 import PreviewIntro
-import AsyncDisplayKit
 
 let preview = [
     PreviewIntro(
